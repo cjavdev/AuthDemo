@@ -1,12 +1,15 @@
+require 'bcrypt'
+
 class User < ActiveRecord::Base
   attr_accessible :username, :password
   
   def password=(password)
-    self.password_digest = Digest::SHA2.base64digest(password)
+    # BCrypt docs at http://bcrypt-ruby.rubyforge.org/
+    self.password_digest = BCrypt::Password.create(password)
   end
   
   def verify_password(password)
-    self.password_digest == Digest::SHA2.base64digest(password)
+    BCrypt::Password.new(self.password_digest) == password
   end
   
   def reset_session_token!
