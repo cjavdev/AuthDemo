@@ -17,12 +17,12 @@ class SessionsController < ApplicationController
   
   def destroy
     u = current_user
-        
+    
     if u.nil?
       redirect_to new_session_url
       return
     end
-      
+    
     session[:session_token] = nil
     u.session_token = nil
     u.save!
