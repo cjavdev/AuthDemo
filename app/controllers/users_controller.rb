@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  def show
-    # @user = ...
-    render :json => @user
+  def show    
+    render :json => current_user
   end
 end

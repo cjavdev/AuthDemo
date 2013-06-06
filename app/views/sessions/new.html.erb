@@ -1,0 +1,8 @@
+<form action="<%= session_url %>" method="post">
+  <input type="text" name="user[username]"></input>
+  <input type="password" name="user[password]"></input>
+  
+  <input type="submit" value="Login">
+</form>
+
+<%= button_to "Logout", session_url, :method => :delete %>

@@ -1,4 +1,6 @@
 AuthDemo::Application.routes.draw do
-  resources :users
-  resource :sessions
+  resource :user
+  resource :session
+  
+  root :to => "sessions#new"
 end
